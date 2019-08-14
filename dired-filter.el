@@ -1009,6 +1009,12 @@ letter, otherwise it is case-sensitive."
       (let ((case-fold-search t))
         (string-match-p qualifier file-name)))))
 
+(dired-filter-define migemo
+    "Toggle current view to files matching QUALIFIER by migemo."
+  (:description "migemo"
+   :reader (read-string "Input: " ))
+  (string-match-p (migemo-get-pattern qualifier) file-name))
+
 ;;;###autoload (autoload 'dired-filter-by-extension "dired-filter")
 ;;;###autoload (autoload 'dired-filter-mark-by-extension "dired-filter")
 (dired-filter-define extension
